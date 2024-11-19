@@ -1,6 +1,8 @@
 package Lazaar;
 
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.layout.VBox;
@@ -17,6 +19,7 @@ public class VueActeNaissance {
     Label dateNaissance = new Label("Date de naissance");
     DatePicker date = new DatePicker();
     Label lieuNaissance;
+    TextField lieu;
 
     ComboBox<String> sexe = new ComboBox<>();
     Button creeActeNaissance = new Button("Créer Acte Naissance");
@@ -50,7 +53,7 @@ public class VueActeNaissance {
         txtprenomPetit = new TextField();
 
         lieuNaissance = new Label("Lieu de naissance");
-        TextField lieu = new TextField();
+        lieu = new TextField();
         sexLabel = new Label("Sexe");
 
         // Ajouter tous les champs au conteneur VBox
@@ -76,6 +79,28 @@ public class VueActeNaissance {
         Stage boiteDialog = new Stage();
         boiteDialog.initModality(Modality.APPLICATION_MODAL);
         boiteDialog.setTitle("Acte de naissance enregistré");
+
+        VBox boite = new VBox();
+        boite.setAlignment(Pos.CENTER);
+
+        Label nomP = new Label("Nom père : " + txtNomP.getText());
+        Label prenomP = new Label("Prenom père : " + txtPrenomP.getText());
+        Label nomM = new Label("Nom maman : " + txtNomM.getText());
+        Label prenomM = new Label("Prenom maman : " + txtPrenomM.getText());
+        Label prenomPetit = new Label("Prenom petit : " + txtprenomPetit.getText());
+        Label nomPetit = new Label("Nom de famille : " + txtNomP.getText());
+        Label lieuNaissance = new Label("Lieu de naissance : " + lieu.getText());
+        Label sexeLabel = new Label("Sexe : " + sexe.getValue());
+
+        boite.getChildren().addAll(
+            nomP, prenomP, 
+            nomM, prenomM, 
+            prenomPetit, nomPetit, 
+            lieuNaissance, sexeLabel
+            );
+
+            Scene boiteScene = new Scene(boite, 400, 300);
+        boiteDialog.setScene(boiteScene);
 
         boiteDialog.show();
         
