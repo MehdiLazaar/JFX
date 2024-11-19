@@ -1,5 +1,6 @@
 package Lazaar;
 
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
@@ -20,6 +21,8 @@ public class VueOperation {
     public void init() {
         // Initialisation de la grille
         grid = new GridPane();
+        //grid.setAlignment(javafx.geometry.Pos.CENTER);
+        grid.setAlignment(Pos.CENTER);
         grid.setHgap(10); // Espacement horizontal
         grid.setVgap(10); // Espacement vertical
 
