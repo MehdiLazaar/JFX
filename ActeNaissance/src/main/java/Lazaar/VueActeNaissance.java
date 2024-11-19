@@ -4,6 +4,8 @@ import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class VueActeNaissance {
     VBox root;
@@ -64,8 +66,19 @@ public class VueActeNaissance {
             creeActeNaissance
         );
         
-        scrollPane.setContent(root); // Le contenu du ScrollPane est le VBox
+        creeActeNaissance.setOnAction((e) -> ouvrirActeNaissance());
+        scrollPane.setContent(root);
         scrollPane.setFitToWidth(true);
+    }
+
+    private void ouvrirActeNaissance() {
+        // Récupération des données
+        Stage boiteDialog = new Stage();
+        boiteDialog.initModality(Modality.APPLICATION_MODAL);
+        boiteDialog.setTitle("Acte de naissance enregistré");
+
+        boiteDialog.show();
+        
     }
 
     public ScrollPane getScrollPane() {
