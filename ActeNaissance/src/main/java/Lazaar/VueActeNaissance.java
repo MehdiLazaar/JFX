@@ -1,23 +1,25 @@
 package main.java.Lazaar;
 
-import javax.swing.ComboBoxEditor;
-import javax.swing.JLabel;
+import javafx.scene.control.*;
 
 public class VueActeNaissance {
-    JLabel nomP = JLabel();
-    JLabel prenomP = JLabel();
+    // Initialisation des champs
+    Label nomP = new Label("Nom père");
+    Label prenomP = new Label("Prénom père");
 
-    JLabel nomM = JLabel();
-    JLabel prenomM = JLabel();
+    Label nomM = new Label("Nom mère");
+    Label prenomM = new Label("Prénom mère");
 
-    JLabel prenomPetit = new JLabel();
-    JLabel dateNaissance = JLabel();
-    JLabel lieuNaissance = JLabel();
+    Label prenomPetit = new Label("Prénom enfant");
+    Label dateNaissance = new Label("Date de naissance");
+    Label lieuNaissance = new Label("Lieu de naissance");
 
-    ComboBoxEditor sexe = new ComboBoxEditor();
-    Button creeActeNaissance = new Button("Cree Acte Naissance");
+    ComboBox<String> sexe = new ComboBox<>();
+    Button creeActeNaissance = new Button("Créer Acte Naissance");
 
-    VueActeNaissance(Personne personne) {
-
+    // Constructeur
+    public VueActeNaissance(Personne personne) {
+        // Ajout des options à la ComboBox
+        sexe.getItems().addAll("Homme", "Femme");
     }
 }
