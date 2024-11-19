@@ -15,8 +15,14 @@ public class App extends Application {
     @Override
     public void start(Stage stage) {
         
+        PersonneActe p1 = new PersonneActe();
+        
+        // Créer la vue pour afficher la personne
+        VueActeNaissance vue = new VueActeNaissance(p1);
+        // Mettre un titre à la fenêtre
+        stage.setTitle("Acte de naissance");
         var label = new Label("Mehdi Lazaar");
-        var scene = new Scene(new StackPane(label), 640, 480);
+        Scene scene = new Scene(vue.getRoot(), 640, 480);
         stage.setScene(scene);
         stage.show();
     }

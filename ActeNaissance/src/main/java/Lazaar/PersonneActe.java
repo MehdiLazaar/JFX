@@ -1,18 +1,19 @@
-package main.java.Lazaar;
+package Lazaar;
 
 import javafx.beans.property.*;
 
-public class Personne {
+public class PersonneActe {
     public StringProperty nom, prenom;
     public StringProperty sexe;
     public IntegerProperty age;
 
-    
-    Personne(String nom, String prenom, String sexe, int age) {
-        this.nom = new SimpleStringProperty(nom);
-        this.prenom = new SimpleStringProperty(prenom);
-        this.sexe = new SimpleStringProperty(sexe);
-        this.age = new SimpleIntegerProperty(age);
+
+    //Constructeur sans argument
+    public PersonneActe() {
+        this.nom = new SimpleStringProperty(null);
+        this.prenom = new SimpleStringProperty(null);
+        this.sexe = new SimpleStringProperty(null);
+        this.age = new SimpleIntegerProperty(0);
     }
     /**
      * Initialize the Personne object.

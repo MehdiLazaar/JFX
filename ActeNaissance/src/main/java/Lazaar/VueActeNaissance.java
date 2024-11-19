@@ -1,25 +1,70 @@
-package main.java.Lazaar;
+package Lazaar;
 
 import javafx.scene.control.*;
+import javafx.event.ActionEvent;
+import javafx.geometry.Pos;
+import javafx.scene.layout.VBox;
 
 public class VueActeNaissance {
+    VBox root;
     // Initialisation des champs
-    Label nomP = new Label("Nom père");
-    Label prenomP = new Label("Prénom père");
+    Label nomP, prenomP, nomM, prenomM, prenomPetit, nomEnfant,age , sexLabel;
+    TextField txtNomP, txtPrenomP, txtNomM, txtPrenomM, txtprenomPetit, txtnomPetit;
 
-    Label nomM = new Label("Nom mère");
-    Label prenomM = new Label("Prénom mère");
-
-    Label prenomPetit = new Label("Prénom enfant");
     Label dateNaissance = new Label("Date de naissance");
-    Label lieuNaissance = new Label("Lieu de naissance");
+    DatePicker date = new DatePicker();
+    Label lieuNaissance;
 
     ComboBox<String> sexe = new ComboBox<>();
     Button creeActeNaissance = new Button("Créer Acte Naissance");
 
     // Constructeur
-    public VueActeNaissance(Personne personne) {
+    public VueActeNaissance(PersonneActe personne) {
         // Ajout des options à la ComboBox
         sexe.getItems().addAll("Homme", "Femme");
+        init(personne);
+    }
+
+    void init(PersonneActe personne) {
+        root = new VBox();
+        root.setAlignment(Pos.CENTER);
+        root.setSpacing(10);
+        // Champs pour le père
+        nomP = new Label("Nom père");
+        txtNomP = new TextField(personne.nom.get());
+
+        prenomP = new Label("Prénom père");
+        txtPrenomP = new TextField(personne.prenom.get());
+
+        // Champs pour la mère
+        nomM = new Label("Nom maman");
+        txtNomM = new TextField();
+        prenomM = new Label("Prénom maman");
+        txtPrenomM = new TextField();
+
+        // Champs pour l'enfant
+        prenomPetit = new Label("Prénom enfant");
+        txtprenomPetit = new TextField();
+
+        lieuNaissance = new Label("Lieu de naissance");
+        TextField lieu = new TextField();
+        sexLabel = new Label("Sexe");
+
+        // Ajouter tous les champs au conteneur VBox
+        root.getChildren().addAll(
+            nomP, txtNomP, 
+            prenomP, txtPrenomP, 
+            nomM, txtNomM, 
+            prenomM, txtPrenomM, 
+            prenomPetit, txtprenomPetit, 
+            dateNaissance, date,
+            lieuNaissance, lieu,
+            sexe,sexLabel,
+            creeActeNaissance
+        );
+    }
+
+    public VBox getRoot() {
+        return root;
     }
 }
