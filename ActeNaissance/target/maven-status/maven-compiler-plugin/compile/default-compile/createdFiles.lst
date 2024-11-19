@@ -1,4 +1,5 @@
 Lazaar\SystemInfo.class
-main\java\Lazaar\VueActeNaissance.class
+Lazaar\VueActeNaissance.class
+Lazaar\App.class
+Lazaar\PersonneActe.class
 module-info.class
-main\java\Lazaar\PersonneActe.class

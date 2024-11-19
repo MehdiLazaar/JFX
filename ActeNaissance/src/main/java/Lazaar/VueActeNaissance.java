@@ -7,6 +7,7 @@ import javafx.scene.layout.VBox;
 
 public class VueActeNaissance {
     VBox root;
+    ScrollPane scrollPane = new ScrollPane();
     // Initialisation des champs
     Label nomP, prenomP, nomM, prenomM, prenomPetit, nomEnfant,age , sexLabel;
     TextField txtNomP, txtPrenomP, txtNomM, txtPrenomM, txtprenomPetit, txtnomPetit;
@@ -62,9 +63,12 @@ public class VueActeNaissance {
             sexe,sexLabel,
             creeActeNaissance
         );
+        
+        scrollPane.setContent(root); // Le contenu du ScrollPane est le VBox
+        scrollPane.setFitToWidth(true);
     }
 
-    public VBox getRoot() {
-        return root;
+    public ScrollPane getScrollPane() {
+        return scrollPane;
     }
 }
