@@ -1,3 +1,5 @@
 Lazaar\SystemInfo.class
+Lazaar\VueActeNaissance.class
+Lazaar\App.class
 Lazaar\PersonneActe.class
 module-info.class

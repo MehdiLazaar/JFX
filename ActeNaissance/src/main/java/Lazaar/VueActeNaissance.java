@@ -2,10 +2,19 @@ package Lazaar;
 
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.lang.System.Logger;
+import java.lang.System.Logger.Level;
+
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -65,7 +74,7 @@ public class VueActeNaissance {
             prenomPetit, txtprenomPetit, 
             dateNaissance, date,
             lieuNaissance, lieu,
-            sexe,sexLabel,
+            sexLabel,sexe,
             creeActeNaissance
         );
         
@@ -90,14 +99,50 @@ public class VueActeNaissance {
         Label prenomPetit = new Label("Prenom petit : " + txtprenomPetit.getText());
         Label nomPetit = new Label("Nom de famille : " + txtNomP.getText());
         Label lieuNaissance = new Label("Lieu de naissance : " + lieu.getText());
+        Label dateNaissance = new Label("Date de naissance : " + date.getValue());
         Label sexeLabel = new Label("Sexe : " + sexe.getValue());
+        Button btnTelecharger = new Button("Telecharger votre Acte de naissance");
+        btnTelecharger.setOnAction((e) -> {
+            // Choisir le fichier avec FileChooser
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("TXT", "*.txt"));
+            // Ouvrir une boîte de dialogue pour choisir où sauvegarder le fichier
+            File selectedFile = fileChooser.showSaveDialog(null);
+
+            // Sauvegarder le fichier
+            if(selectedFile!= null){
+                try{
+                    BufferedWriter ecrire = new BufferedWriter(new FileWriter(selectedFile));
+                    ecrire.write("Nom père : " + txtNomP.getText());
+                    ecrire.newLine();
+                    ecrire.write("Prenom père : " + txtPrenomP.getText());
+                    ecrire.newLine();
+                    ecrire.write("Nom maman : " + txtNomM.getText());
+                    ecrire.newLine();
+                    ecrire.write("Prenom maman : " + txtPrenomM.getText());
+                    ecrire.newLine();
+                    ecrire.write("Prenom bébé : " + txtprenomPetit.getText());
+                    ecrire.newLine();
+                    ecrire.write("Nom de famille : " + txtNomP.getText());
+                    ecrire.newLine();
+                    ecrire.write("Lieu de naissance : " + lieu.getText());
+                    ecrire.newLine();
+                    ecrire.write("Date de naissance : " + date.getValue());
+                    ecrire.newLine();
+                    ecrire.write("Sexe : " + sexe.getValue());
+                    ecrire.close();
+                } catch (IOException ex) {
+                    System.out.println("Une erreur s'est produite lors de la sauvegarde du fichier.");
+                }
+            }
+        });
 
         boite.getChildren().addAll(
             nomP, prenomP, 
             nomM, prenomM, 
             prenomPetit, nomPetit, 
-            lieuNaissance, sexeLabel
-            );
+            lieuNaissance, sexeLabel,
+            btnTelecharger);
 
             Scene boiteScene = new Scene(boite, 400, 300);
         boiteDialog.setScene(boiteScene);
