@@ -142,13 +142,13 @@ public class VueActeNaissance {
             nomM, prenomM, 
             prenomPetit, nomPetit, 
             lieuNaissance, sexeLabel,
-            btnTelecharger);
+            btnTelecharger
+        );
 
-            Scene boiteScene = new Scene(boite, 400, 300);
+        Scene boiteScene = new Scene(boite, 400, 300);
         boiteDialog.setScene(boiteScene);
 
         boiteDialog.show();
-        
     }
 
     public ScrollPane getScrollPane() {
